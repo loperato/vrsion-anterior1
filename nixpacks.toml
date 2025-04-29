@@ -5,7 +5,7 @@ commands = [
   "npm run build:worker"
 ]
 
-[phases.start]
+[start]
 command = "npm start"
 
 [environment]
@@ -19,6 +19,4 @@ version = "3.0.0"
 [build.cloudflare]
 runtime = "nodejs"
 entry = ".open-next/worker.js"
-
-[build.cloudflare]
 include_files = ["worker"]
