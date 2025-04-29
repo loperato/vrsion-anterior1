@@ -1,8 +1,14 @@
 [phases.build]
-commands = ["npm install", "npm run build", "npm run build:worker"]
+commands = ["npm install --workspaces", "npm run build:worker", "npm run build"]
 
 [phases.start]
 command = "npm start"
 
 [environment]
 node_version = "18.x"
+
+[providers.node]
+version = "18.19.1"
+
+[providers.cloudflare]
+version = "1.39.0"
