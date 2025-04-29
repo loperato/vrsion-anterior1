@@ -1,0 +1,29 @@
+steps:
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+  id: 'npm-install'
+  env:
+  - 'CI=true'
+
+  # Configuración de caché para node_modules
+  volumes:
+  - name: 'cache'
+    path: /cache
+
+# Definición de montaje de caché con prefijo regional
+options:
+  diskSizeGb: 10
+  logging: CLOUD_LOGGING_ONLY
+  machineType: E2_HIGHCPU_8
+  substitution_option: 'ALLOW_LOOSE'
+  workerPool: 'projects/efirex/locations/us-east4/workerPools/main-pool'
+  
+  # Montaje usando clave de caché con prefijo regional
+  cacheMounts:
+  - name: 'cache'
+    path: '/cache'
+    cacheKey: 'us-east4-${_CACHE_KEY}-node-modules'
+
+# Definición de variables de sustitución
+substitutions:
+  _CACHE_KEY: '${COMMIT_SHA}'
