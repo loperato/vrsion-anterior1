@@ -1,0 +1,8 @@
+[phases.build]
+commands = ["npm install", "npm run build", "npm run build:worker"]
+
+[phases.start]
+command = "npm start"
+
+[environment]
+node_version = "18.x"
