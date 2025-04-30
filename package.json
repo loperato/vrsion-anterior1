@@ -8,11 +8,12 @@
   ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "open-next build",
+    "deploy": "open-next deploy",
     "start": "next start",
     "lint": "next lint",
     "build:worker": "opennextjs-cloudflare",
-    "preview": "opennextjs-cloudflare && wrangler dev",
+    "preview": "pnpm build && wrangler dev",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
